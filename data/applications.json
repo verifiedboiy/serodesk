@@ -1,0 +1,40 @@
+[
+  {
+    "id": "070f577d-e4e9-479d-8a28-a4c710eb3669",
+    "deviceId": "070f577d-e4e9-479d-8a28-a4c710eb3669",
+    "submittedAt": "2026-11-24T17:06:41.290Z",
+    "fullName": "Verified Boy",
+    "email": "verifiedboiy@gmail.com",
+    "phone": "(234) 567-8956",
+    "address": "sdfghjesuipo",
+    "zip": "12345",
+    "linkedin": "N/A",
+    "bank": "  tata",
+    "accountAge": "New",
+    "accountRange": "Under 12 months",
+    "backup": "Chime",
+    "computer": "No",
+    "availability": "Part-Time",
+    "experience": "No",
+    "status": "Pending"
+  },
+  {
+    "id": "e71530a1-8cc2-4782-8f64-41eea950afb0",
+    "deviceId": "e71530a1-8cc2-4782-8f64-41eea950afb0",
+    "submittedAt": "2026-11-24T17:03:46.633Z",
+    "fullName": "Cross Browser Test",
+    "email": "cross.browser@example.com",
+    "phone": "(555) 987-6543",
+    "address": "456 Shared Avenue, Austin, TX",
+    "zip": "78701",
+    "linkedin": "N/A",
+    "bank": "Shared Test Bank",
+    "accountAge": "New",
+    "accountRange": "Under 6 months",
+    "backup": "Cash App",
+    "computer": "Yes",
+    "availability": "Full-Time",
+    "experience": "Yes",
+    "status": "Pending"
+  }
+]
