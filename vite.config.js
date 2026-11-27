@@ -8,7 +8,9 @@ export default defineConfig({
         home: 'home.html',
         info: 'info.html',
         payroll: 'payroll.html',
-        view: 'view.html'
+        view: 'view.html',
+        shop: 'shop.html',
+        checkout: 'checkout.html'
       }
     }
   }

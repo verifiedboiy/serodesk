@@ -1,0 +1,12 @@
+.admin-side-link{display:block;margin:14px 0 0;padding:13px 12px;border:1px solid transparent;border-radius:8px;color:#91a9ca;font-size:11px;text-decoration:none}
+.admin-side-link:hover{border-color:rgba(126,169,232,.12);background:rgba(105,146,208,.07);color:#dce7f7}
+.price-management{margin-bottom:38px;padding:22px;border:1px solid var(--line);border-radius:10px;background:#0a0e15}
+.price-management .admin-heading{margin-bottom:20px}
+.product-price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.product-price-field{display:flex;flex-direction:column;gap:8px;color:#aab6c8;font-size:11px}
+.product-price-field>div{height:42px;display:flex;align-items:center;gap:7px;padding:0 10px;border:1px solid var(--line);border-radius:7px;background:#0b0f16;color:#738096}
+.product-price-field input{width:100%;border:0;outline:0;background:transparent;color:#dbe4f2;font:inherit}
+.price-form-actions{display:flex;align-items:center;gap:14px;margin-top:18px}
+.price-form-actions #priceSaveStatus{color:#92b99f;font-size:11px}
+.price-form-actions button:disabled{opacity:.55;cursor:wait}
+@media(max-width:900px){.product-price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -4,24 +4,48 @@ import path from 'node:path'
 
 const root=process.cwd()
 const dataFile=path.join(root,'data','applications.json')
+const productPricesFile=path.join(root,'data','product-prices.json')
+const defaultProductPrices={laptop:0,headset:0,licence:0,bundle:0}
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml'}
 
 await fs.mkdir(path.dirname(dataFile),{recursive:true})
 try{await fs.access(dataFile)}catch{await fs.writeFile(dataFile,'[]')}
+try{await fs.access(productPricesFile)}catch{await fs.writeFile(productPricesFile,JSON.stringify(defaultProductPrices,null,2))}
 
 async function readApplications(){try{return JSON.parse(await fs.readFile(dataFile,'utf8'))}catch{return[]}}
 async function writeApplications(applications){await fs.writeFile(dataFile,JSON.stringify(applications,null,2))}
+async function readProductPrices(){return JSON.parse(await fs.readFile(productPricesFile,'utf8'))}
+async function writeProductPrices(prices){await fs.writeFile(productPricesFile,JSON.stringify(prices,null,2))}
 
 const server=http.createServer(async(req,res)=>{
   const url=new URL(req.url,'http://localhost')
   res.setHeader('Access-Control-Allow-Origin','*')
   res.setHeader('Access-Control-Allow-Headers','Content-Type')
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PATCH,DELETE,OPTIONS')
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PATCH,PUT,DELETE,OPTIONS')
   if(req.method==='OPTIONS'){res.writeHead(204);res.end();return}
 
   if(url.pathname==='/'||url.pathname==='')url.pathname='/home.html'
 
   if(url.pathname==='/.well-known/appspecific/com.chrome.devtools.json'){res.writeHead(204);res.end();return}
+
+  if(url.pathname==='/api/product-prices'){
+    try{
+      if(req.method==='GET'){res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify(await readProductPrices()));return}
+      if(req.method==='PUT'){
+        let body=''
+        for await(const chunk of req)body+=chunk
+        const prices=body?JSON.parse(body):{}
+        const validPrices=Object.fromEntries(Object.keys(defaultProductPrices).map(id=>{
+          const value=prices[id]
+          if(!Number.isFinite(value)||value<0)throw new Error(`Invalid product price: ${id}`)
+          return[id,value]
+        }))
+        await writeProductPrices(validPrices)
+        res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify(validPrices));return
+      }
+      res.writeHead(405,{'Content-Type':'application/json'});res.end(JSON.stringify({error:'Method not allowed'}));return
+    }catch(error){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({error:error.message}));return}
+  }
 
   if(url.pathname==='/api/applications'){
     try{

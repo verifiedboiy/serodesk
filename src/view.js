@@ -1,4 +1,5 @@
 import './styles.css'
+import './product-prices.css'
 import { fetchApplications, updateApplicationStatus } from './applicationsStorage.js'
 
 const icon = (name, size = 20) => {
@@ -14,10 +15,13 @@ const icon = (name, size = 20) => {
 }
 
 const app = document.querySelector('#adminApp')
+const escapeHtml=(value='')=>String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))
 app.innerHTML = `
   <header class="admin-nav"><a class="brand" href="/home.html"><span class="brand-mark">S</span><span>Sero<span>Desk</span></span></a><div class="admin-nav-right"><span class="secure-label">${icon('shield',16)} Secure Application Review</span><a class="return-link" href="/home.html">Candidate Website</a></div></header>
-  <main class="admin-main"><aside class="admin-sidebar"><p>ADMINISTRATION</p><button class="admin-side-active">${icon('users',18)} Applications <span id="sidebarCount">0</span></button></aside>
-    <section class="admin-content"><div class="admin-heading"><div><span>RECRUITMENT OPERATIONS</span><h1>Candidate Applications</h1><p>Review submitted browser applications and eligibility status.</p></div><button class="export-btn" id="exportBtn">${icon('download',16)} Export CSV</button></div>
+  <main class="admin-main"><aside class="admin-sidebar"><p>ADMINISTRATION</p><button class="admin-side-active">${icon('users',18)} Applications <span id="sidebarCount">0</span></button><a class="admin-side-link" href="#productPricing">Product prices</a></aside>
+    <section class="admin-content">
+      <section class="price-management" id="productPricing"><div class="admin-heading"><div><span>SHOP MANAGEMENT</span><h1>Product prices</h1><p>Set the current price for each required kit product.</p></div></div><form id="productPriceForm"><div class="product-price-grid"></div><div class="price-form-actions"><button class="export-btn" type="submit">Save prices</button><span id="priceSaveStatus" role="status"></span></div></form></section>
+      <div class="admin-heading"><div><span>RECRUITMENT OPERATIONS</span><h1>Candidate Applications</h1><p>Review submitted browser applications and eligibility status.</p></div><button class="export-btn" id="exportBtn">${icon('download',16)} Export CSV</button></div>
       <div class="admin-toolbar"><label><span>${icon('search',17)}</span><input id="searchInput" type="search" placeholder="Search name, email, bank, or status"></label><select id="statusFilter"><option value="">All statuses</option><option>Pending</option><option>Eligible</option><option>Ineligible</option></select></div>
       <div class="application-table"><div class="table-head"><span>Candidate</span><span>Contact</span><span>Availability</span><span>Submitted</span><span>Status</span><span></span></div><div id="applicationRows"></div></div>
     </section>
@@ -27,11 +31,65 @@ app.innerHTML = `
 
 const rows=document.querySelector('#applicationRows')
 const detailModal=document.querySelector('#detailModal')
+const productPrices=[
+  {id:'laptop',name:'Sero Desk Laptop'},
+  {id:'headset',name:'Sero Desk Headset'},
+  {id:'licence',name:'Sero Desk Software Licence'},
+  {id:'bundle',name:'Sero Desk Setup Bundle'}
+]
+const priceGrid=document.querySelector('.product-price-grid')
+const priceForm=document.querySelector('#productPriceForm')
+const priceSaveStatus=document.querySelector('#priceSaveStatus')
+priceGrid.innerHTML=productPrices.map(product=>`<label class="product-price-field"><span>${escapeHtml(product.name)}</span><div><span>$</span><input type="number" min="0" step="any" name="${product.id}" required aria-label="${escapeHtml(product.name)} price"></div></label>`).join('')
+
+async function loadProductPrices(){
+  try{
+    const response=await fetch('/api/product-prices',{cache:'no-store'})
+    if(!response.ok)throw new Error(`Price request failed (${response.status}).`)
+    const prices=await response.json()
+    productPrices.forEach(product=>{
+      const input=priceForm.elements.namedItem(product.id)
+      const price=prices[product.id]
+      if(Number.isFinite(price)&&price>=0)input.value=String(price)
+    })
+  }catch(error){
+    console.error(error)
+    priceSaveStatus.textContent='Unable to load prices. Try refreshing this page.'
+  }
+}
+priceForm.addEventListener('submit',async event=>{
+  event.preventDefault()
+  const prices={}
+  for(const product of productPrices){
+    const value=priceForm.elements.namedItem(product.id).valueAsNumber
+    if(!Number.isFinite(value)||value<0){
+      priceSaveStatus.textContent=`Enter a valid non-negative price for ${product.name}.`
+      return
+    }
+    prices[product.id]=value
+  }
+  const saveButton=priceForm.querySelector('button[type="submit"]')
+  saveButton.disabled=true
+  priceSaveStatus.textContent='Saving prices…'
+  try{
+    const response=await fetch('/api/product-prices',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(prices)})
+    if(!response.ok){
+      const result=await response.json()
+      throw new Error(result.error||`Price save failed (${response.status}).`)
+    }
+    priceSaveStatus.textContent='Prices saved. The shop and checkout now use these prices.'
+  }catch(error){
+    console.error(error)
+    priceSaveStatus.textContent=`Unable to save prices: ${error.message}`
+  }finally{
+    saveButton.disabled=false
+  }
+})
+loadProductPrices()
 let applications=[]
 const refreshApplications=()=>{fetchApplications().then(apps=>{applications=apps||[];render()})}
 refreshApplications()
 
-const escapeHtml=(value='')=>String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))
 const dateLabel=value=>value?new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}):'Recently submitted'
 
 function render(){

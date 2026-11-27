@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070a10">
+    <meta name="description" content="Get the essential equipment for your Sero Desk role.">
+    <title>Required Kit | Sero Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #070a10;
+        --surface: #0d1119;
+        --surface-raised: #101722;
+        --line: rgba(151, 174, 210, .13);
+        --text: #f2f5fa;
+        --muted: #8d98a8;
+        --blue: #78a8ff;
+        --blue-light: #a9c7ff;
+        --content: 1160px;
+        --radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 88px; }
+      body { min-width: 320px; margin: 0; background: var(--bg); }
+      button, a { font: inherit; }
+      button { color: inherit; }
+      a { color: inherit; }
+      button:focus-visible, a:focus-visible {
+        outline: 2px solid var(--blue-light);
+        outline-offset: 4px;
+      }
+      .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+
+      .site-header {
+        position: relative;
+        z-index: 3;
+        height: 70px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(7, 10, 16, .94);
+      }
+      .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+      .wordmark {
+        color: var(--text);
+        text-decoration: none;
+        font: 800 20px/1 "Manrope", sans-serif;
+        letter-spacing: -.8px;
+      }
+      .wordmark span { color: #91b7ff; }
+      .header-cart {
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0c1119;
+        color: #c4cfdf;
+        cursor: pointer;
+      }
+      .header-cart:hover { border-color: rgba(132, 174, 233, .35); background: #101722; }
+      .header-cart[aria-disabled="true"] { opacity: .7; }
+      .header-cart svg { width: 18px; height: 18px; color: #91b7ff; }
+      .count-pill {
+        min-width: 21px;
+        height: 21px;
+        display: inline-grid;
+        place-items: center;
+        padding: 0 5px;
+        border-radius: 12px;
+        background: rgba(120, 168, 255, .13);
+        color: #b7d0ff;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 76px 0 78px;
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(ellipse at 82% 45%, rgba(58, 103, 169, .16), transparent 34%),
+          linear-gradient(110deg, #080b12, #090e17 70%, #080b12);
+      }
+      .hero::after {
+        position: absolute;
+        top: 50%;
+        right: max(calc((100vw - var(--content)) / 2 + 20px), 8%);
+        width: 220px;
+        height: 220px;
+        border: 1px solid rgba(120, 168, 255, .12);
+        border-radius: 50%;
+        box-shadow: 0 0 0 34px rgba(120, 168, 255, .025), 0 0 0 68px rgba(120, 168, 255, .02);
+        content: "";
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+      .hero-content { position: relative; z-index: 1; max-width: 700px; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: #9db1cf;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #82aff9;
+        box-shadow: 0 0 14px #82aff9;
+        content: "";
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      .hero h1 {
+        max-width: 660px;
+        margin: 20px 0 13px;
+        font: 800 clamp(42px, 6vw, 68px)/1.04 "Manrope", sans-serif;
+        letter-spacing: -3.4px;
+      }
+      .hero h1 span { color: #91b5f7; }
+      .hero p { margin-bottom: 26px; color: #98a3b2; font-size: 16px; line-height: 1.6; }
+      .primary-button {
+        min-height: 49px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 19px;
+        border: 0;
+        border-radius: 7px;
+        background: linear-gradient(135deg, #8cb6ff, #5c8edb);
+        color: #07101e;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 800;
+        transition: filter .18s ease, transform .18s ease;
+      }
+      .primary-button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+      .primary-button svg { width: 16px; height: 16px; }
+
+      .reasons { border-bottom: 1px solid var(--line); background: #090d14; }
+      .reason-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .reason {
+        min-height: 106px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 20px 25px;
+        border-right: 1px solid var(--line);
+      }
+      .reason:first-child { padding-left: 0; }
+      .reason:last-child { padding-right: 0; border-right: 0; }
+      .reason-icon {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(132, 169, 225, .16);
+        border-radius: 9px;
+        color: #91b4ee;
+      }
+      .reason-icon svg { width: 18px; height: 18px; }
+      .reason p { margin: 0; color: #778499; font-size: 12px; line-height: 1.55; }
+      .reason strong { display: block; margin-bottom: 3px; color: #dce5f2; font-size: 13px; }
+
+      .products-section { padding: 77px 0 84px; }
+      .section-heading { margin-bottom: 25px; }
+      .section-heading .eyebrow { color: #8299ba; }
+      .section-heading h2 {
+        margin: 10px 0 7px;
+        font: 700 clamp(25px, 3vw, 34px)/1.2 "Manrope", sans-serif;
+        letter-spacing: -1.1px;
+      }
+      .section-heading p { margin: 0; color: var(--muted); font-size: 14px; }
+      .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+      .product-card {
+        min-width: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(160deg, #101722, #0b1017 74%);
+        transition: border-color .2s ease, transform .2s ease;
+      }
+      .product-card:hover { border-color: rgba(132, 174, 233, .32); transform: translateY(-2px); }
+      .product-art {
+        height: 184px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: radial-gradient(ellipse at 50% 70%, rgba(71, 112, 174, .16), transparent 58%), #0b111a;
+      }
+      .product-art::before, .product-art::after {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border: 1px solid rgba(136, 174, 232, .08);
+        border-radius: 50%;
+        content: "";
+      }
+      .product-art::after { width: 120px; height: 120px; border-style: dashed; }
+      .product-art svg { position: relative; z-index: 1; width: 118px; height: 94px; color: #a9c6f4; }
+      .product-card:nth-child(2) .product-art svg { width: 96px; height: 96px; }
+      .product-card:nth-child(3) .product-art svg { width: 82px; height: 100px; }
+      .product-card:nth-child(4) .product-art svg { width: 130px; height: 106px; }
+      .product-details { flex: 1; display: flex; flex-direction: column; padding: 19px 18px 17px; }
+      .product-category { margin-bottom: 8px; color: #7f9bc5; font-size: 9px; font-weight: 700; letter-spacing: 1.25px; text-transform: uppercase; }
+      .product-details h3 { margin: 0 0 7px; font: 700 17px/1.35 "Manrope", sans-serif; letter-spacing: -.3px; }
+      .product-reason { min-height: 38px; margin: 0; color: #8b97a8; font-size: 12px; line-height: 1.55; }
+      .product-bottom { margin-top: 21px; }
+      .price-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 13px; }
+      .price-row span { color: #788599; font-size: 11px; }
+      .price-row strong { color: #e8eef8; font: 700 16px "Manrope", sans-serif; }
+      .add-button {
+        width: 100%;
+        min-height: 41px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid rgba(130, 170, 231, .27);
+        border-radius: 7px;
+        background: rgba(95, 139, 202, .09);
+        color: #b9d1f6;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background .18s ease, border-color .18s ease;
+      }
+      .add-button:hover { border-color: rgba(130, 170, 231, .6); background: rgba(95, 139, 202, .17); }
+      .add-button.added { border-color: rgba(103, 177, 145, .35); background: rgba(67, 144, 108, .12); color: #a5dfc2; }
+      .add-button:disabled { cursor: default; }
+      .add-button svg { width: 15px; height: 15px; }
+
+      .checkout-section { padding: 72px 0 86px; border-top: 1px solid var(--line); background: #090d14; scroll-margin-top: 28px; }
+      .checkout-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 38px; align-items: start; }
+      .checkout-title { margin-bottom: 20px; }
+      .checkout-title h2 { margin: 9px 0 6px; font: 700 30px/1.2 "Manrope", sans-serif; letter-spacing: -.9px; }
+      .checkout-title p { margin: 0; color: var(--muted); font-size: 13px; }
+      .order-panel, .total-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #0d121a;
+      }
+      .order-panel { min-height: 220px; padding: 19px; }
+      .empty-cart {
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #8491a4;
+        text-align: center;
+      }
+      .empty-cart svg { width: 30px; height: 30px; margin-bottom: 12px; color: #6f87a9; }
+      .empty-cart strong { color: #c6d1e0; font-size: 14px; }
+      .empty-cart p { margin: 5px 0 0; font-size: 12px; }
+      .order-list { margin: 0; padding: 0; list-style: none; }
+      .order-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+      .order-item:first-child { padding-top: 2px; }
+      .order-item:last-child { padding-bottom: 2px; border-bottom: 0; }
+      .order-item-info { min-width: 0; }
+      .order-item-info strong { display: block; color: #dce5f2; font-size: 13px; }
+      .order-item-info > span { display: block; margin-top: 4px; color: #8390a3; font-size: 11px; }
+      .order-item-actions { display: flex; align-items: center; gap: 14px; }
+      .quantity-stepper { height: 31px; display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 6px; background: #090e15; }
+      .quantity-stepper button { width: 29px; height: 29px; border: 0; background: transparent; color: #b1c2da; font-size: 17px; cursor: pointer; }
+      .quantity-stepper button:disabled { color: #455166; cursor: not-allowed; }
+      .quantity-stepper span { min-width: 20px; color: #e1e9f4; font-size: 11px; text-align: center; }
+      .remove-button { padding: 5px 0; border: 0; background: transparent; color: #8f9aad; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+      .remove-button:hover { color: #f0a5a9; }
+      .line-price { align-self: center; color: #dce5f2; font-size: 12px; font-weight: 600; white-space: nowrap; }
+      .total-panel { padding: 19px; }
+      .total-panel h3 { margin: 0 0 17px; font: 700 15px "Manrope", sans-serif; }
+      .total-line { display: flex; justify-content: space-between; gap: 10px; margin: 11px 0; color: #929eaf; font-size: 12px; }
+      .total-line strong { color: #dbe5f2; font-weight: 600; }
+      .total-divider { height: 1px; margin: 16px 0; background: var(--line); }
+      .total-final { color: #dce5f2; font-size: 14px; }
+      .total-final strong { font: 700 19px "Manrope", sans-serif; color: #f2f5fa; }
+      .place-order { width: 100%; min-height: 45px; margin-top: 8px; }
+      .place-order:disabled { filter: grayscale(.5); opacity: .46; cursor: not-allowed; transform: none; }
+      .checkout-note { margin: 12px 0 0; color: #738096; font-size: 10px; line-height: 1.5; text-align: center; }
+      .confirmation {
+        padding: 30px 24px;
+        border: 1px solid rgba(105, 173, 140, .22);
+        border-radius: var(--radius);
+        background: rgba(60, 120, 91, .08);
+        text-align: center;
+      }
+      .confirmation[hidden] { display: none; }
+      .confirmation-icon { width: 42px; height: 42px; display: grid; place-items: center; margin: 0 auto 13px; border: 1px solid rgba(122, 200, 159, .33); border-radius: 50%; color: #99dbb7; }
+      .confirmation-icon svg { width: 20px; height: 20px; }
+      .confirmation h3 { margin: 0 0 7px; font: 700 18px "Manrope", sans-serif; }
+      .confirmation p { margin: 0; color: #9aa8a6; font-size: 13px; line-height: 1.6; }
+
+      .site-footer { min-height: 70px; display: flex; align-items: center; border-top: 1px solid var(--line); background: #070a10; }
+      .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .footer-inner .wordmark { font-size: 16px; }
+      .footer-inner p { margin: 0; color: #667387; font-size: 11px; }
+
+      .sticky-cart {
+        position: fixed;
+        z-index: 5;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+        border-top: 1px solid rgba(132, 174, 233, .2);
+        background: rgba(9, 14, 22, .96);
+        box-shadow: 0 -12px 36px rgba(0, 0, 0, .28);
+        backdrop-filter: blur(14px);
+      }
+      .sticky-cart[hidden] { display: none; }
+      .sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+      .sticky-summary { display: flex; flex-direction: column; gap: 3px; }
+      .sticky-summary strong { font-size: 13px; }
+      .sticky-summary span { color: #8592a5; font-size: 11px; }
+      .sticky-checkout { min-height: 43px; white-space: nowrap; }
+      .sticky-checkout[aria-disabled="true"] { filter: grayscale(.5); opacity: .48; }
+      .bump { animation: cart-bump .32s ease; }
+      @keyframes cart-bump { 35% { transform: scale(1.025); } 70% { transform: scale(.99); } }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 1000px) {
+        .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .product-art { height: 200px; }
+        .checkout-layout { grid-template-columns: minmax(0, 1fr) 280px; gap: 22px; }
+      }
+      @media (max-width: 680px) {
+        .wrap { width: min(var(--content), calc(100% - 36px)); }
+        .site-header { height: 64px; }
+        .hero { padding: 61px 0 64px; }
+        .hero::after { right: -105px; opacity: .7; }
+        .hero h1 { max-width: 510px; font-size: clamp(40px, 10vw, 58px); letter-spacing: -2.5px; }
+        .hero p { max-width: 400px; font-size: 14px; }
+        .reason-grid { grid-template-columns: 1fr; padding-block: 8px; }
+        .reason, .reason:first-child, .reason:last-child {
+          min-height: 76px;
+          padding: 12px 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .reason:last-child { border-bottom: 0; }
+        .products-section { padding: 58px 0 64px; }
+        .product-grid { gap: 12px; }
+        .product-art { height: 160px; }
+        .product-details { padding: 15px 14px; }
+        .product-details h3 { font-size: 15px; }
+        .product-reason { min-height: 54px; font-size: 11px; }
+        .checkout-section { padding: 58px 0 68px; }
+        .checkout-layout { grid-template-columns: 1fr; gap: 16px; }
+        .checkout-title h2 { font-size: 26px; }
+      }
+      @media (max-width: 400px) {
+        .wrap { width: calc(100% - 32px); }
+        .product-grid { grid-template-columns: 1fr; gap: 14px; }
+        .product-card { display: grid; grid-template-columns: 38% minmax(0, 1fr); }
+        .product-art { height: 100%; min-height: 220px; border-right: 1px solid var(--line); border-bottom: 0; }
+        .product-art svg { width: 82px; height: 70px; }
+        .product-card:nth-child(2) .product-art svg { width: 68px; height: 68px; }
+        .product-card:nth-child(3) .product-art svg { width: 58px; height: 72px; }
+        .product-card:nth-child(4) .product-art svg { width: 88px; height: 76px; }
+        .product-art::before { width: 120px; height: 120px; }
+        .product-art::after { width: 88px; height: 88px; }
+        .product-details { padding: 15px 13px; }
+        .product-reason { min-height: 0; }
+        .product-bottom { margin-top: 15px; }
+        .order-panel { padding: 14px; }
+        .order-item { gap: 8px; }
+        .order-item-actions { gap: 9px; }
+        .quantity-stepper button { width: 25px; }
+        .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 14px; }
+        .sticky-inner { gap: 10px; }
+        .sticky-checkout { min-height: 41px; padding-inline: 12px; font-size: 11px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="#top" aria-label="Sero Desk home">Sero<span>Desk</span></a>
+        <a class="header-cart" href="/checkout.html" aria-label="Your cart, 0 items" data-checkout-link>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6"/>
+            <circle cx="10" cy="20" r="1"/>
+            <circle cx="18" cy="20" r="1"/>
+          </svg>
+          <span>Cart</span>
+          <span class="count-pill" data-cart-count aria-live="polite">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div class="hero-content">
+            <span class="eyebrow">Sero Desk equipment</span>
+            <h1 id="hero-title">Your required <span>Sero Desk kit.</span></h1>
+            <p>Everything you need to work securely and comfortably, supplied by us for your role.</p>
+            <a class="primary-button" href="#products">
+              Shop the required kit
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="reasons" aria-label="Why Sero Desk supplies your kit">
+        <div class="wrap reason-grid">
+          <div class="reason">
+            <span class="reason-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 10h.01M15 10h.01"/></svg></span>
+            <p><strong>Made for our environment</strong>Set up for the tools and workflows your role needs.</p>
+          </div>
+          <div class="reason">
+            <span class="reason-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <p><strong>Your data stays protected</strong>Keep company work off personal devices.</p>
+          </div>
+          <div class="reason">
+            <span class="reason-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5c-.6-.8-1.7-1.2-3-1.2-1.7 0-3 .8-3 2s1.3 1.9 3 2.2 3 1 3 2.3-1.3 2.2-3 2.2c-1.4 0-2.6-.5-3.2-1.4M12.5 5.5v13"/></svg></span>
+            <p><strong>Current item pricing</strong>Review the listed price for each required item.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="products-section" id="products" aria-labelledby="products-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <span class="eyebrow">Your essentials</span>
+            <h2 id="products-title">The required kit</h2>
+            <p>Add each item to your order. Every item is required for your Sero Desk setup.</p>
+          </div>
+          <div class="product-grid" data-product-grid></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span class="wordmark" aria-label="Sero Desk">Sero<span>Desk</span></span>
+        <p>Equipment for the way we work.</p>
+      </div>
+    </footer>
+
+    <div class="sticky-cart" data-sticky-cart hidden>
+      <div class="wrap sticky-inner" data-sticky-inner>
+        <div class="sticky-summary">
+          <strong><span data-sticky-count>0</span> <span data-sticky-label>items</span> in your kit</strong>
+          <span>Total <span data-sticky-total>$0.00</span></span>
+        </div>
+        <a class="primary-button sticky-checkout" href="/checkout.html" data-checkout-link>
+          Proceed to checkout
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="sr-only" data-announcer aria-live="polite"></div>
+
+    <script>
+      const SHOP_CONFIG = {
+        currency: "USD",
+        locale: "en-US",
+        products: [
+          { id: "laptop", name: "Sero Desk Laptop", category: "Workstation", reason: "Your secure, company-ready work computer.", price: 0 },
+          { id: "headset", name: "Sero Desk Headset", category: "Audio", reason: "For clear, reliable calls with your team.", price: 0 },
+          { id: "licence", name: "Sero Desk Software Licence", category: "Software", reason: "Access the tools and systems used in your role.", price: 0 },
+          { id: "bundle", name: "Sero Desk Setup Bundle", category: "Complete kit", reason: "The complete essentials for your Sero Desk setup.", price: 0 }
+        ]
+      };
+
+      const art = {
+        laptop: '<svg viewBox="0 0 140 110" fill="none" aria-hidden="true"><rect x="29" y="17" width="82" height="57" rx="5" fill="#15243a" stroke="currentColor" stroke-width="2"/><rect x="35" y="23" width="70" height="45" rx="2" fill="#0b111b" stroke="#5979a7" stroke-width="1"/><path d="M23 79h94l9 8c1 1 0 3-2 3H16c-2 0-3-2-2-3l9-8Z" fill="#1b2b43" stroke="currentColor" stroke-width="2"/><path d="M58 82h24" stroke="#7295c6" stroke-width="2" stroke-linecap="round"/><path d="m47 51 9-9 8 7 14-14 16 16" stroke="#82aff9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        headset: '<svg viewBox="0 0 110 110" fill="none" aria-hidden="true"><path d="M24 59v-7a31 31 0 0 1 62 0v7" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><rect x="17" y="54" width="16" height="29" rx="7" fill="#1b2b43" stroke="currentColor" stroke-width="2"/><rect x="77" y="54" width="16" height="29" rx="7" fill="#1b2b43" stroke="currentColor" stroke-width="2"/><path d="M85 83c-3 10-12 15-24 15h-6" stroke="#7899c7" stroke-width="2.5" stroke-linecap="round"/><rect x="43" y="92" width="17" height="10" rx="5" fill="#17283e" stroke="#91b4ee" stroke-width="1.5"/></svg>',
+        licence: '<svg viewBox="0 0 90 110" fill="none" aria-hidden="true"><path d="M21 10h34l17 17v70a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Z" fill="#15243a" stroke="currentColor" stroke-width="2"/><path d="M55 10v17h17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 43h34M29 54h34M29 65h25" stroke="#6f89ac" stroke-width="2" stroke-linecap="round"/><circle cx="45" cy="80" r="8" fill="#1b3454" stroke="#91b4ee" stroke-width="1.5"/><path d="m42 80 2 2 4-5" stroke="#a9c6f4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        bundle: '<svg viewBox="0 0 150 115" fill="none" aria-hidden="true"><rect x="13" y="55" width="58" height="42" rx="4" fill="#182941" stroke="#91b4ee" stroke-width="1.8"/><path d="M13 65h58M42 55v42M32 55c-9-3-9-11-3-12 6-1 13 12 13 12Zm10 0c9-3 9-11 3-12-6-1-13 12-13 12Z" stroke="#91b4ee" stroke-width="1.6" stroke-linejoin="round"/><rect x="81" y="16" width="48" height="34" rx="3" fill="#15243a" stroke="currentColor" stroke-width="1.8"/><path d="M76 55h58l6 5H70l6-5Z" fill="#1b2b43" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M101 67a18 18 0 0 1 36 0v3h-8v-3a10 10 0 0 0-20 0v3h-8v-3Z" fill="#1b2b43" stroke="#91b4ee" stroke-width="1.8"/><rect x="98" y="66" width="8" height="16" rx="3" fill="#1b2b43" stroke="#91b4ee" stroke-width="1.5"/><rect x="132" y="66" width="8" height="16" rx="3" fill="#1b2b43" stroke="#91b4ee" stroke-width="1.5"/></svg>'
+      };
+
+      const productById = new Map(SHOP_CONFIG.products.map(product => [product.id, product]));
+      const CART_KEY = "serodesk-kit-cart";
+      function loadCart() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+          return new Map(Object.entries(saved)
+            .filter(([id, quantity]) => productById.has(id) && Number.isInteger(quantity) && quantity > 0)
+            .map(([id]) => [id, 1]));
+        } catch {
+          return new Map();
+        }
+      }
+      function saveCart() {
+        localStorage.setItem(CART_KEY, JSON.stringify(Object.fromEntries(cart)));
+      }
+      const cart = loadCart();
+      const money = new Intl.NumberFormat(SHOP_CONFIG.locale, {
+        style: "currency",
+        currency: SHOP_CONFIG.currency
+      });
+      const productGrid = document.querySelector("[data-product-grid]");
+      const stickyCart = document.querySelector("[data-sticky-cart]");
+      const announcer = document.querySelector("[data-announcer]");
+      const buttonTimers = new WeakMap();
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, character => ({
+          "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        })[character]);
+      }
+
+      function renderProducts() {
+        productGrid.innerHTML = SHOP_CONFIG.products.map(product => `
+          <article class="product-card">
+            <div class="product-art" role="img" aria-label="${escapeHtml(product.name)} product illustration">${art[product.id]}</div>
+            <div class="product-details">
+              <span class="product-category">${escapeHtml(product.category)}</span>
+              <h3>${escapeHtml(product.name)}</h3>
+              <p class="product-reason">${escapeHtml(product.reason)}</p>
+              <div class="product-bottom">
+                <div class="price-row"><span>Product price</span><strong>${money.format(product.price)}</strong></div>
+                <button class="add-button" type="button" data-add="${escapeHtml(product.id)}">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      function cartTotals() {
+        let count = 0;
+        let total = 0;
+        cart.forEach((quantity, id) => {
+          count += quantity;
+          total += productById.get(id).price * quantity;
+        });
+        return { count, total };
+      }
+
+      function renderCart() {
+        const { count, total } = cartTotals();
+        const allRequiredItemsAdded = cart.size === SHOP_CONFIG.products.length;
+        document.querySelectorAll("[data-cart-count]").forEach(element => {
+          element.textContent = String(count);
+        });
+        const checkoutLinks = document.querySelectorAll("[data-checkout-link]");
+        checkoutLinks.forEach(link => link.setAttribute("aria-disabled", String(!allRequiredItemsAdded)));
+        document.querySelector(".header-cart").setAttribute("aria-label", `Your cart, ${count} of ${SHOP_CONFIG.products.length} required items`);
+        document.querySelector("[data-sticky-count]").textContent = String(count);
+        document.querySelector("[data-sticky-label]").textContent = count === 1 ? "item" : "items";
+        document.querySelector("[data-sticky-total]").textContent = money.format(total);
+        stickyCart.hidden = count === 0;
+        productGrid.querySelectorAll("[data-add]").forEach(button => {
+          const added = cart.has(button.dataset.add);
+          button.disabled = added;
+          button.setAttribute("aria-label", added ? `${productById.get(button.dataset.add).name} added to cart` : `Add ${productById.get(button.dataset.add).name} to cart`);
+          if (added) {
+            button.classList.add("added");
+            button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Added to cart';
+          }
+        });
+      }
+
+      function bumpStickyCart() {
+        const inner = document.querySelector("[data-sticky-inner]");
+        inner.classList.remove("bump");
+        void inner.offsetWidth;
+        inner.classList.add("bump");
+      }
+
+      function addToCart(id, button) {
+        const product = productById.get(id);
+        if (!product || cart.has(id)) return;
+        cart.set(id, 1);
+        saveCart();
+        renderCart();
+        bumpStickyCart();
+        announcer.textContent = `${product.name} added to cart.`;
+
+        if (buttonTimers.has(button)) clearTimeout(buttonTimers.get(button));
+        button.classList.add("added");
+        button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Added to cart';
+        buttonTimers.set(button, setTimeout(() => {
+          button.classList.remove("added");
+          button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Add to cart';
+        }, 1300));
+      }
+
+      productGrid.addEventListener("click", event => {
+        const button = event.target.closest("[data-add]");
+        if (button) addToCart(button.dataset.add, button);
+      });
+
+      document.querySelectorAll("[data-checkout-link]").forEach(link => {
+        link.addEventListener("click", event => {
+          if (cart.size === SHOP_CONFIG.products.length) return;
+          event.preventDefault();
+          announcer.textContent = `Add all ${SHOP_CONFIG.products.length} required products before proceeding to checkout. ${cart.size} added so far.`;
+        });
+      });
+
+      async function loadProductPrices() {
+        try {
+          const response = await fetch("/api/product-prices", { cache: "no-store" });
+          if (!response.ok) throw new Error(`Price request failed (${response.status}).`);
+          const prices = await response.json();
+          SHOP_CONFIG.products.forEach(product => {
+            if (Number.isFinite(prices[product.id]) && prices[product.id] >= 0) product.price = prices[product.id];
+          });
+        } catch (error) {
+          console.error(error);
+          announcer.textContent = "Current product prices could not be loaded. Please refresh or contact support.";
+        }
+        renderProducts();
+        renderCart();
+      }
+
+      loadProductPrices();
+    </script>
+  </body>
+</html>

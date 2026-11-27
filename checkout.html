@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#070a10">
+    <title>Checkout | Sero Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root { color-scheme: dark; --bg:#070a10; --line:rgba(151,174,210,.13); --text:#f2f5fa; --muted:#8d98a8; --blue:#91b7ff; }
+      *{box-sizing:border-box} html{min-width:320px} body{min-width:320px;margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif}
+      button,a{font:inherit} button{color:inherit} a{color:inherit}
+      button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+      .wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+      .site-header{height:70px;border-bottom:1px solid var(--line);background:rgba(7,10,16,.94)}
+      .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+      .wordmark{text-decoration:none;font:800 20px "Manrope",sans-serif;letter-spacing:-.8px}.wordmark span{color:#91b7ff}
+      .back-link{color:#a7b4c7;font-size:12px;text-decoration:none}.back-link:hover{color:#dce7f7}
+      main{min-height:calc(100vh - 140px);padding:64px 0 80px}
+      .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#9db1cf;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase}
+      .eyebrow::before{width:7px;height:7px;border-radius:50%;background:#82aff9;box-shadow:0 0 14px #82aff9;content:""}
+      h1,h2,h3,p{margin-top:0}
+      h1{margin:12px 0 8px;font:800 38px/1.15 "Manrope",sans-serif;letter-spacing:-1.4px}
+      .intro{margin:0 0 28px;color:var(--muted);font-size:14px}
+      .layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:38px;align-items:start}
+      .order-panel,.summary{border:1px solid var(--line);border-radius:12px;background:#0d121a}
+      .order-panel{padding:8px 20px}
+      .order-list{margin:0;padding:0;list-style:none}
+      .order-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+      .order-item:last-child{border-bottom:0}
+      .order-name{display:block;margin-bottom:5px;font-size:14px}.order-category{color:#8391a5;font-size:11px}
+      .item-actions{display:flex;align-items:center;gap:12px;margin-top:12px}
+      .stepper{height:32px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:6px;background:#090e15}
+      .stepper button{width:30px;height:30px;border:0;background:transparent;cursor:pointer}.stepper button:disabled{color:#455166;cursor:not-allowed}
+      .stepper span{min-width:24px;text-align:center;font-size:11px}
+      .remove{border:0;background:transparent;color:#929daf;font-size:11px;text-decoration:underline;cursor:pointer}.remove:hover{color:#f0a5a9}
+      .line-price{font-size:13px;font-weight:700;white-space:nowrap}
+      .empty{min-height:220px;display:grid;place-items:center;text-align:center;color:#8491a4}.empty strong{display:block;margin-bottom:5px;color:#c6d1e0}.empty p{margin:0;font-size:12px}
+      .summary{padding:20px}.summary h2{margin:0 0 16px;font:700 16px "Manrope",sans-serif}
+      .total-line{display:flex;justify-content:space-between;margin:11px 0;color:#929eaf;font-size:12px}.total-line strong{color:#dbe5f2}
+      .divider{height:1px;margin:16px 0;background:var(--line)}.final{color:#dce5f2;font-size:14px}.final strong{font:700 19px "Manrope",sans-serif;color:#f2f5fa}
+      .place-order{width:100%;min-height:45px;border:0;border-radius:7px;background:linear-gradient(135deg,#8cb6ff,#5c8edb);color:#07101e;font-size:13px;font-weight:800;cursor:pointer}
+      .place-order:disabled{filter:grayscale(.5);opacity:.46;cursor:not-allowed}
+      .note{margin:12px 0 0;color:#738096;font-size:10px;line-height:1.5;text-align:center}
+      .requirement{margin:10px 0 0;color:#aab8cc;font-size:11px;line-height:1.5;text-align:center}
+      .confirmation{display:none;padding:34px;border:1px solid rgba(105,173,140,.22);border-radius:12px;background:rgba(60,120,91,.08);text-align:center}
+      .confirmation.visible{display:block}.confirmation h2{margin:0 0 8px;font:700 22px "Manrope",sans-serif}.confirmation p{margin:0;color:#9aa8a6;font-size:13px}
+      .site-footer{min-height:70px;display:flex;align-items:center;border-top:1px solid var(--line)}
+      .footer-inner{display:flex;justify-content:space-between}.footer-inner p{margin:0;color:#667387;font-size:11px}
+      .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+      @media(max-width:680px){.wrap{width:calc(100% - 36px)}main{padding:48px 0 64px}.layout{grid-template-columns:1fr;gap:18px}h1{font-size:32px}.order-panel{padding-inline:14px}.footer-inner{flex-direction:column;gap:8px}}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/shop.html" aria-label="Sero Desk required kit">Sero<span>Desk</span></a>
+        <a class="back-link" href="/shop.html">Continue choosing items</a>
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <span class="eyebrow">Review your kit</span>
+        <h1>Checkout</h1>
+        <p class="intro">Confirm the required equipment for your Sero Desk setup.</p>
+        <div class="layout" data-layout>
+          <div>
+            <div class="order-panel" data-order-panel></div>
+            <div class="confirmation" data-confirmation role="status">
+              <h2>Order received</h2>
+              <p>Your order has been received. Please contact the vendor to complete your payment.</p>
+            </div>
+          </div>
+          <aside class="summary" aria-label="Order summary">
+            <h2>Order summary</h2>
+            <div class="total-line"><span>Items</span><strong data-count>0</strong></div>
+            <div class="total-line"><span>Subtotal</span><strong data-subtotal>$0.00</strong></div>
+            <div class="divider"></div>
+            <div class="total-line final"><span>Total</span><strong data-total>$0.00</strong></div>
+            <button class="place-order" type="button" data-place-order disabled>Place order</button>
+            <p class="requirement" data-requirement></p>
+            <p class="note">Contact the vendor to arrange payment for your required equipment.</p>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><div class="wrap footer-inner"><span class="wordmark">Sero<span>Desk</span></span><p>Equipment for the way we work.</p></div></footer>
+    <div class="sr-only" data-announcer aria-live="polite"></div>
+    <script>
+      const CART_KEY = "serodesk-kit-cart";
+      const products = [
+        { id:"laptop", name:"Sero Desk Laptop", category:"Workstation", price:0 },
+        { id:"headset", name:"Sero Desk Headset", category:"Audio", price:0 },
+        { id:"licence", name:"Sero Desk Software Licence", category:"Software", price:0 },
+        { id:"bundle", name:"Sero Desk Setup Bundle", category:"Complete kit", price:0 }
+      ];
+      const productById = new Map(products.map(product => [product.id, product]));
+      const money = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD" });
+      let cart = new Map();
+      try {
+        const saved = JSON.parse(localStorage.getItem(CART_KEY) || "{}");
+        cart = new Map(Object.entries(saved)
+          .filter(([id, quantity]) => productById.has(id) && Number.isInteger(quantity) && quantity > 0)
+          .map(([id]) => [id, 1]));
+      } catch {}
+      const orderPanel = document.querySelector("[data-order-panel]");
+      const placeOrder = document.querySelector("[data-place-order]");
+      const confirmation = document.querySelector("[data-confirmation]");
+      const announcer = document.querySelector("[data-announcer]");
+
+      function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(Object.fromEntries(cart))); }
+      function escapeHtml(value){ return String(value).replace(/[&<>"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[character]); }
+      function render(){
+        const count=cart.size;
+        const total=[...cart.keys()].reduce((sum,id)=>sum+productById.get(id).price,0);
+        const allRequiredItemsAdded=count===products.length;
+        document.querySelector("[data-count]").textContent=`${count} of ${products.length}`;
+        document.querySelector("[data-subtotal]").textContent=money.format(total);
+        document.querySelector("[data-total]").textContent=money.format(total);
+        placeOrder.disabled=!allRequiredItemsAdded;
+        document.querySelector("[data-requirement]").textContent=allRequiredItemsAdded
+          ? "All required products are in your order."
+          : `Add all ${products.length} required products before placing your order (${count} of ${products.length} added).`;
+        if(count===0){
+          orderPanel.innerHTML='<div class="empty"><div><strong>Your cart is empty</strong><p><a href="/shop.html">Choose your required kit</a>.</p></div></div>';
+          return;
+        }
+        orderPanel.innerHTML='<ul class="order-list">'+[...cart.keys()].map(id=>{
+          const product=productById.get(id);
+          return '<li class="order-item"><div><strong class="order-name">'+escapeHtml(product.name)+'</strong><span class="order-category">'+escapeHtml(product.category)+'</span><div class="item-actions"><button class="remove" type="button" data-remove="'+escapeHtml(id)+'">Remove</button></div></div><span class="line-price">'+money.format(product.price)+'</span></li>';
+        }).join("")+'</ul>';
+      }
+      orderPanel.addEventListener("click",event=>{
+        const button=event.target.closest("button"); if(!button)return;
+        const id=button.dataset.remove; if(!cart.has(id))return;
+        cart.delete(id);announcer.textContent=productById.get(id).name+" removed from the cart.";
+        confirmation.classList.remove("visible");saveCart();render();
+      });
+      placeOrder.addEventListener("click",()=>{
+        if(cart.size!==products.length)return;
+        cart.clear();saveCart();render();
+        confirmation.classList.add("visible");
+        announcer.textContent="Order received. Your kit order has been recorded.";
+        confirmation.scrollIntoView({behavior:"smooth",block:"center"});
+      });
+      async function loadProductPrices(){
+        try{
+          const response=await fetch("/api/product-prices",{cache:"no-store"});
+          if(!response.ok)throw new Error(`Price request failed (${response.status}).`);
+          const prices=await response.json();
+          products.forEach(product=>{if(Number.isFinite(prices[product.id])&&prices[product.id]>=0)product.price=prices[product.id]});
+        }catch(error){
+          console.error(error);
+          announcer.textContent="Current product prices could not be loaded. Please refresh or contact support.";
+        }
+        render();
+      }
+      loadProductPrices();
+    </script>
+  </body>
+</html>
